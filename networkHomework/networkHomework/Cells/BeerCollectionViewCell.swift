@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class BeerCollectionViewCell: UICollectionViewCell {
-
+    
     var indexPath = IndexPath(row: 0, section: 0)
     
     private let beerImageView: UIImageView = {
@@ -51,6 +51,11 @@ class BeerCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        beerImageView.image = nil
+    }
+    
     private func setupLayout() {
         contentView.addSubview(beerImageView)
         contentView.addSubview(nameLabel)
@@ -83,19 +88,14 @@ class BeerCollectionViewCell: UICollectionViewCell {
     func setupData(beer: Beer, indexPath: IndexPath) {
         nameLabel.text = beer.name
         desriptionLabel.text = beer.description
-        let imageURL = URL(string: beer.imageURL)
-        downloadImage(from: imageURL!)
-        
+        if let url = beer.imageURL {
+            guard let imageURL = URL(string: url) else {return}
+            networkManager.getImage(from: imageURL) { imageData in
+                self.beerImageView.image = UIImage(data: imageData)
+            }
+        } else {
+            self.beerImageView.image = UIImage(named: "noImage")
+        }
         self.indexPath = indexPath
     }
-    
-    func downloadImage(from url: URL) {
-        networkManager.getImage(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.beerImageView.image = UIImage(data: data)
-            }
-        }
-    }
-    
 }

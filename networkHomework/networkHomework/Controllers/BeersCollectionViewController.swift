@@ -39,7 +39,6 @@ class BeersCollectionViewController: UIViewController {
     
     func setupProperts() {
         view.backgroundColor = .white
-        title = "Beers Info"
         beersCollectionView.delegate = self
         beersCollectionView.dataSource = self
     }
@@ -51,6 +50,16 @@ class BeersCollectionViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.bottom.leading.trailing.equalToSuperview()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Beers Info"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = ""
     }
     
 }
@@ -82,5 +91,21 @@ extension BeersCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = BeerInfoViewController()
+        vc.setupData(beer: beers[indexPath.row])
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        if scrollView.isAtBottom {
+            networkManager.getBeerDataNextPage { beers in
+                self.beers += beers
+                print(self.beers.count)
+            }
+        }
     }
 }
