@@ -18,6 +18,8 @@ class BeersCollectionViewController: UIViewController {
     
     private let networkManager = NetworkManager()
     
+    private var refresherControl = UIRefreshControl()
+    
     private let beersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -32,9 +34,19 @@ class BeersCollectionViewController: UIViewController {
         super.viewDidLoad()
         setupProperts()
         setupLayout()
-        networkManager.getBeerData { beers in
-            self.beers = beers
-        }
+        fetchData()
+        setupRefreshControl()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Beers Info"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = ""
     }
     
     func setupProperts() {
@@ -52,14 +64,25 @@ class BeersCollectionViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        title = "Beers Info"
+    private func fetchData() {
+        networkManager.getBeerData { beers in
+            self.beers = beers
+        }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        title = ""
+    private func setupRefreshControl() {
+        self.refresherControl.tintColor = .systemTeal
+        self.beersCollectionView.alwaysBounceVertical = true
+        self.refresherControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        self.beersCollectionView.addSubview(refresherControl)
+    }
+    
+    @objc func loadData() {
+        networkManager.getBeerData { beers in
+            self.refresherControl.endRefreshing()
+            self.beers = beers
+        }
+        
     }
     
 }
@@ -104,7 +127,6 @@ extension BeersCollectionViewController: UICollectionViewDelegateFlowLayout {
         if scrollView.isAtBottom {
             networkManager.getBeerDataNextPage { beers in
                 self.beers += beers
-                print(self.beers.count)
             }
         }
     }

@@ -38,7 +38,7 @@ class BeerInfoViewController: UIViewController {
     
     private let desriptionLabel = CustomLabel(
         text: "desriptionLabel",
-        textAlignment: .left,
+        textAlignment: .justified,
         size: 16,
         color: .black,
         weight: .light
@@ -46,7 +46,7 @@ class BeerInfoViewController: UIViewController {
     
     private let foodPairingLabel = CustomLabel(
         text: "foodPairingLabel",
-        textAlignment: .left,
+        textAlignment: .natural,
         size: 16,
         color: .black,
         weight: .light
@@ -157,12 +157,9 @@ class BeerInfoViewController: UIViewController {
         if let maltQty = beer?.ingredients.malt.count, let hopsQty = beer?.ingredients.hops.count {
             value = CGFloat(maltQty + hopsQty + 1)
         }
-         
-        print(height)
-        print(value)
         
-        var heightOfTable = value*height + CGFloat(10)*value
-        print(heightOfTable)
+        let heightOfTable = value*height + CGFloat(10)*value
+
         ingredientsTableView.snp.makeConstraints {
             $0.height.equalTo(heightOfTable)
         }

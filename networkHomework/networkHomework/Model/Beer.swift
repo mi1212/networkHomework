@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Beer
 struct Beer: Codable {
     let id: Int
     let name, tagline, description: String
@@ -40,14 +41,11 @@ struct Malt: Codable {
 struct Hop: Codable {
     let name: String
     let amount: BoilVolume
-//    let add: Add
-//    let attribute: Attribute
 }
 
 // MARK: - BoilVolume
 struct BoilVolume: Codable {
     let value: Double
-//    let unit: Unit
 }
 
 // MARK: - Add
@@ -72,26 +70,3 @@ enum Unit: String, Codable {
     case kilograms = "kilograms"
     case litres = "litres"
 }
-
-//// MARK: - Method
-//struct Method: Codable {
-//    let mashTemp: [MashTemp]
-//    let fermentation: Fermentation
-//    let twist: String?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case mashTemp = "mash_temp"
-//        case fermentation, twist
-//    }
-//}
-//
-//// MARK: - Fermentation
-//struct Fermentation: Codable {
-//    let temp: BoilVolume
-//}
-//
-//// MARK: - MashTemp
-//struct MashTemp: Codable {
-//    let temp: BoilVolume
-//    let duration: Int?
-//}
