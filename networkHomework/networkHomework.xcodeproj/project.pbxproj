@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BCA3755734C94C3FBA25A302 /* Pods_networkHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B953A8505678CE5FFF2CAE51 /* Pods_networkHomework.framework */; };
+		DC818BF2F0AF634EAA73E202 /* libPods-networkHomework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63321A4ABCD6793AA26A5AF9 /* libPods-networkHomework.a */; };
 		FD23B59929A4EF090084F4FA /* BeersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD23B59829A4EF090084F4FA /* BeersCollectionViewController.swift */; };
 		FD6F72E529A53CB5001F7CEE /* BeerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F72E429A53CB5001F7CEE /* BeerCollectionViewCell.swift */; };
 		FD6F72E729A53D82001F7CEE /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F72E629A53D82001F7CEE /* UIView+Extention.swift */; };
@@ -25,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		5B3B45A0546BDF3F3E1C5217 /* Pods-networkHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-networkHomework.debug.xcconfig"; path = "Target Support Files/Pods-networkHomework/Pods-networkHomework.debug.xcconfig"; sourceTree = "<group>"; };
+		63321A4ABCD6793AA26A5AF9 /* libPods-networkHomework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-networkHomework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EE018D7D3F92B7DA0A6B66 /* Pods-networkHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-networkHomework.release.xcconfig"; path = "Target Support Files/Pods-networkHomework/Pods-networkHomework.release.xcconfig"; sourceTree = "<group>"; };
-		B953A8505678CE5FFF2CAE51 /* Pods_networkHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_networkHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD23B59829A4EF090084F4FA /* BeersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersCollectionViewController.swift; sourceTree = "<group>"; };
 		FD6F72E429A53CB5001F7CEE /* BeerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD6F72E629A53D82001F7CEE /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCA3755734C94C3FBA25A302 /* Pods_networkHomework.framework in Frameworks */,
+				DC818BF2F0AF634EAA73E202 /* libPods-networkHomework.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 		752FF633C7144BCEB7891619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B953A8505678CE5FFF2CAE51 /* Pods_networkHomework.framework */,
+				63321A4ABCD6793AA26A5AF9 /* libPods-networkHomework.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,7 +171,6 @@
 				FDC0F14229A4ED0E00D286B9 /* Sources */,
 				FDC0F14329A4ED0E00D286B9 /* Frameworks */,
 				FDC0F14429A4ED0E00D286B9 /* Resources */,
-				B8A1329B6C23AE6B0CD2F1CB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,23 +227,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B8A1329B6C23AE6B0CD2F1CB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-networkHomework/Pods-networkHomework-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-networkHomework/Pods-networkHomework-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-networkHomework/Pods-networkHomework-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FCFD9DB6AB7D0DCFEA409445 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
